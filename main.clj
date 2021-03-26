@@ -1,6 +1,6 @@
-; ----------------- 
-; Unit test library
-; -----------------
+; ------------------------------- 
+; U n i t  t e s t  l i b r a r y
+; -------------------------------
 
 (defmacro fn-name
   [f]
@@ -14,27 +14,11 @@
 
 (defn execute-test [test-function, expected]
   (assert-equals (test-function) expected)
-  ;(println 
-    ;(str "Executing " (fn-name test-function) " -> " (test-function))
-  ;  (str "->" (test-function))
-  ;)
 )
 
-(defn my-add-unit-test [] (+ 4 5))
-(execute-test my-add-unit-test 9)
-
-
-;(println (alwaysfalse "dummy"))
-;(defn alwaysfalse [ignore] (boolean true))
-
-;(if (alwaysfalse 4) (println "true!") (println "false!"))
-; (println  (greet "Zeger"))
-
-; (defn assert-test-result [result, expected-result] )
-
-; ------
-; Greed code
-; ------
+; ------------------
+; G r e e d  c o d e
+; ------------------
 
 (defn score [dice]
   (reduce addScoreForSingleDie 0,dice)
@@ -53,24 +37,21 @@
     :else 0
   )
 )
-; -----
-; Test
-; ------
-; testSixDiceContainsSingleOneRewards100  
-(if (= (score [1 2]) 100) true false)
 
-; testSixDiceContainsZeroOneRewards0
-(if (= (score [3 4]) 0) true false)
+; ------------------
+; U n i t  t e s t s
+; ------------------
+(defn single-one-rewards-onehundred [] (score [1 2]))  
+(execute-test single-one-rewards-onehundred 100)
 
-; testSixDiceContainsSingleFiveRewards50
-(if (= (score [4 5]) 50) true false)
+(defn no-one-rewards-zero [] (score [3 4]))
+(execute-test no-one-rewards-zero 0)
 
-(if (= (score [6 4]) 0) true false)
+(defn double-one-rewards-zero [] (score [1 1]))
+(execute-test double-one-rewards-zero 0)
 
-; 1 + 5 = 150
-(if (= (score [1 5]) 150) true false)
+(defn single-five-rewards-fifty [] (score [5 4]))
+(execute-test single-five-rewards-fifty 50)
 
-;(defn test [x,y]
-;  (+ x 1)
-;)
-;(reduce test [1 2 3 4 5])
+(defn single-five-single-one-rewards-onefifty [] (score [1 5]))
+(execute-test single-five-single-one-rewards-onefifty 150)
