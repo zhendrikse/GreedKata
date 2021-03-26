@@ -2,16 +2,20 @@
 ; U n i t  t e s t  l i b r a r y
 ; -------------------------------
 
-;(defmacro fn-name
-;  [f]
-;  `(-> ~f var meta :name str)
-;)
+(defmacro fn-name
+  [f]
+  `(-> ~f var meta :name str)
+)
+
+(defn do-execute-test [test-function, expected]
+  (if (= (test-function) expected) 
+    "Ok"
+    (str "Nok: expected " expected " but was " (test-function))
+  )
+)
 
 (defn execute-test [test-function, expected]
-  (if (= (test-function) expected) 
-    (println "Test ok") 
-    (println (str "test failed, expected " expected " but was " (test-function)))
-  )
+  (println (str "Executing test..." (do-execute-test test-function expected)))
 )
 
 ; ------------------
@@ -25,19 +29,16 @@
        (filter #{s})
        count))
 
-(defn count-ones [thrown-dice-list] 
-  (count-occurrences 1 thrown-dice-list)
+(defn score-ones [thrown-dice-list] 
+  (if (= (count-occurrences 1 thrown-dice-list) 1) 100 0)
 )       
 
-(defn count-fives [thrown-dice-list] 
-  (count-occurrences 5 thrown-dice-list)
+(defn score-fives [thrown-dice-list] 
+  (if (= (count-occurrences 5 thrown-dice-list) 1) 50 0)
 )       
 
 (defn score [thrown-dice-list]
-  (+
-    (if (= (count-ones thrown-dice-list) 1) 100 0)
-    (if (= (count-fives thrown-dice-list) 1) 50 0)
-  )
+  (+ (score-ones thrown-dice-list) (score-fives thrown-dice-list))
 )
 
 ; ------------------
