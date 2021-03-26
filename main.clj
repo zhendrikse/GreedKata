@@ -33,7 +33,7 @@
   (count-occurrences 5 thrown-dice-list)
 )       
 
-(defn rate-dice [thrown-dice-list]
+(defn score [thrown-dice-list]
   (cond
     (= (count-ones thrown-dice-list) 1) 100
     (= (count-fives thrown-dice-list) 1) 50
@@ -45,17 +45,17 @@
 ; ------------------
 ; U n i t  t e s t s
 ; ------------------
-(defn single-one-rewards-onehundred [] (rate-dice '(1 4 2 4 5 6))) 
+(defn single-one-rewards-onehundred [] (score '(1 4 2 4 5 6))) 
 (execute-test single-one-rewards-onehundred 100)
 
-(defn no-one-rewards-zero [] (rate-dice '(3 4 2 4 4 6)))
+(defn no-one-rewards-zero [] (score '(3 4 2 4 4 6)))
 (execute-test no-one-rewards-zero 0)
 
-(defn double-one-rewards-zero [] (rate-dice '(1 4 1 4 4 6)))
+(defn double-one-rewards-zero [] (score '(1 4 1 4 4 6)))
 (execute-test double-one-rewards-zero 0)
 
-(defn single-five-rewards-fifty [] (rate-dice '(3 4 2 4 5 6)))
+(defn single-five-rewards-fifty [] (score '(3 4 2 4 5 6)))
 (execute-test single-five-rewards-fifty 50)
 
-(defn single-five-single-one-rewards-onefifty [] (rate-dice '(1 4 2 4 5 6)))
+(defn single-five-single-one-rewards-onefifty [] (score '(1 4 2 4 5 6)))
 (execute-test single-five-single-one-rewards-onefifty 150)
