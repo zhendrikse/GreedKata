@@ -34,18 +34,16 @@
 )       
 
 (defn score [thrown-dice-list]
-  (cond
-    (= (count-ones thrown-dice-list) 1) 100
-    (= (count-fives thrown-dice-list) 1) 50
-    ; Don't change below code as per request
-    :else 0
+  (+
+    (if (= (count-ones thrown-dice-list) 1) 100 0)
+    (if (= (count-fives thrown-dice-list) 1) 50 0)
   )
 )
 
 ; ------------------
 ; U n i t  t e s t s
 ; ------------------
-(defn single-one-rewards-onehundred [] (score '(1 4 2 4 5 6))) 
+(defn single-one-rewards-onehundred [] (score '(1 4 2 4 6 6))) 
 (execute-test single-one-rewards-onehundred 100)
 
 (defn no-one-rewards-zero [] (score '(3 4 2 4 4 6)))
