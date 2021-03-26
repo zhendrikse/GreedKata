@@ -2,11 +2,6 @@
 ; U n i t  t e s t  l i b r a r y
 ; -------------------------------
 
-(defmacro fn-name
-  [f]
-  `(-> ~f var meta :name str)
-)
-
 (defn do-execute-test [test-function, expected]
   (if (= (test-function) expected) 
     "Ok"
