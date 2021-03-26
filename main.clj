@@ -2,15 +2,11 @@
 ; U n i t  t e s t  l i b r a r y
 ; -------------------------------
 
-(defn do-execute-test [test-function, expected]
-  (if (= (test-function) expected) 
-    "Ok"
-    (str "Nok: expected " expected " but was " (test-function))
+(defn execute-test [text, expected, actual]
+  (if (= actual expected) 
+    (str "Running " text "... ok")
+    (str "Running " text "... failed, expected >>" expected "<< but was >>" actual "<<")
   )
-)
-
-(defn execute-test [test-function, expected]
-  (println (str "Executing test..." (do-execute-test test-function expected)))
 )
 
 ; ------------------
@@ -39,20 +35,14 @@
 ; ------------------
 ; U n i t  t e s t s
 ; ------------------
-(defn single-one-scores-onehundred [] (score '(1 4 2 4 6 6))) 
-(execute-test single-one-scores-onehundred 100)
+(execute-test "single one in list" 100  (score '(1 4 2 4 6 6)))
 
-(defn no-one-scores-zero [] (score '(3 4 2 4 4 6)))
-(execute-test no-one-scores-zero 0)
+(execute-test "not a single one in list" 0 (score '(3 4 2 4 6 6))) 
 
-(defn double-one-scores-zero [] (score '(1 4 1 4 4 6)))
-(execute-test double-one-scores-zero 0)
+(execute-test "double one in list" 0 (score '(1 4 1 4 4 6)))
 
-(defn single-five-scores-fifty [] (score '(3 4 2 4 5 6)))
-(execute-test single-five-scores-fifty 50)
+(execute-test "single five in list" 50 (score '(3 4 2 4 5 6)))
 
-(defn double-five-scores-zero [] (score '(5 4 2 4 5 6)))
-(execute-test double-five-scores-zero 0)
+(execute-test "double five in list" 0 (score '(5 4 2 4 5 6)))
 
-(defn single-five-single-one-scores-onefifty [] (score '(1 4 2 4 5 6)))
-(execute-test single-five-single-one-scores-onefifty 150)
+(execute-test "single five and single in list" 150 (score '(1 4 2 4 5 6)))
