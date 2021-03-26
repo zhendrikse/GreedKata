@@ -43,17 +43,20 @@
 ; ------------------
 ; U n i t  t e s t s
 ; ------------------
-(defn single-one-rewards-onehundred [] (score '(1 4 2 4 6 6))) 
-(execute-test single-one-rewards-onehundred 100)
+(defn single-one-scores-onehundred [] (score '(1 4 2 4 6 6))) 
+(execute-test single-one-scores-onehundred 100)
 
-(defn no-one-rewards-zero [] (score '(3 4 2 4 4 6)))
-(execute-test no-one-rewards-zero 0)
+(defn no-one-scores-zero [] (score '(3 4 2 4 4 6)))
+(execute-test no-one-scores-zero 0)
 
-(defn double-one-rewards-zero [] (score '(1 4 1 4 4 6)))
-(execute-test double-one-rewards-zero 0)
+(defn double-one-scores-zero [] (score '(1 4 1 4 4 6)))
+(execute-test double-one-scores-zero 0)
 
-(defn single-five-rewards-fifty [] (score '(3 4 2 4 5 6)))
-(execute-test single-five-rewards-fifty 50)
+(defn single-five-scores-fifty [] (score '(3 4 2 4 5 6)))
+(execute-test single-five-scores-fifty 50)
 
-(defn single-five-single-one-rewards-onefifty [] (score '(1 4 2 4 5 6)))
-(execute-test single-five-single-one-rewards-onefifty 150)
+(defn double-five-scores-zero [] (score '(5 4 2 4 5 6)))
+(execute-test double-five-scores-zero 0)
+
+(defn single-five-single-one-scores-onefifty [] (score '(1 4 2 4 5 6)))
+(execute-test single-five-single-one-scores-onefifty 150)
