@@ -22,22 +22,27 @@
 ; Greed code
 ; ------
 
-(defn score [dice] 100)
+(defn score [dice]
+  ; only 100 when 1x 1
+  (cond
+    (= dice 1) 100
+    (= dice 5) 50
+    :else 0
+  )
+)
 
 ; -----
 ; Test
 ; ------
-; testSixDiceContainsSingleOneRewards100
-(def dice-with-single-one '(1 2 3 4 5 6))
+; testSixDiceContainsSingleOneRewards100  
+(def dice-with-single-one 1)
 (if (= (score dice-with-single-one) 100) true false)
 
 ; testSixDiceContainsZeroOneRewards0
-(def dice-with-zero-one '(2 2 3 4 5 6))
+(def dice-with-zero-one 2)
 (if (= (score dice-with-zero-one) 0) true false)
 
-
-; testSixDiceContainsSingleOneRewards100
-; (def dice-with-single-one '(1 2 3 4 5 6))
-; (println dice)
-; (if (= (score dice-with-single-one) 100) true false)
+; testSixDiceContainsSinglFiveRewards50
+(def dice-with-single-five 5)
+(if (= (score dice-with-single-five) 50) true false)
 
