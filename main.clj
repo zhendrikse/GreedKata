@@ -4,16 +4,14 @@
 
 (defmacro fn-name
   [f]
-  `(-> ~f var meta :name str))
-
-(defn assert-equals [actual, expected] 
-  (if (= actual expected) 
-    (println "Test ok") 
-    (println (str "test failed, expected " expected " but was " actual)))
+  `(-> ~f var meta :name str)
 )
 
 (defn execute-test [test-function, expected]
-  (assert-equals (test-function) expected)
+  (if (= (test-function) expected) 
+    (println "Test ok") 
+    (println (str "test failed, expected " expected " but was " (test-function)))
+  )
 )
 
 ; ------------------
