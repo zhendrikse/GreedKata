@@ -27,11 +27,11 @@
 (defn score [dice-list]
   (+ 
     (score-occurrences dice-list 1 1 100)  ; single one -> 100
-    (score-occurrences dice-list 5 1 50)   ; single five -> 50
     (score-occurrences dice-list 1 3 1000) ; tripe one -> 1000 
     (score-occurrences dice-list 2 3 200)  ; tripe one -> 1000 
     (score-occurrences dice-list 3 3 300)  ; tripe one -> 1000 
     (score-occurrences dice-list 4 3 400)  ; tripe one -> 1000 
+    (score-occurrences dice-list 5 1 50)   ; single five -> 50
     (score-occurrences dice-list 5 3 500)  ; tripe one -> 1000 
     (score-occurrences dice-list 6 3 600)  ; tripe one -> 1000 
   )
@@ -52,3 +52,7 @@
 (execute-test "triple four in list" 400 (score '(3 2 4 6 4 4)))
 (execute-test "triple five in list" 500 (score '(5 2 4 6 5 5)))
 (execute-test "triple six in list" 600 (score '(3 2 4 6 6 6)))
+
+(execute-test "test case 1 from kata" 1500 (score '(1 1 1 5 1)))
+(execute-test "test case 2 from kata" 0 (score '(2 3 4 6 2)))
+(execute-test "test case 3 from kata" 350 (score '(3 4 5 3 3)))
