@@ -13,17 +13,14 @@
 ; G r e e d  c o d e
 ; ------------------
 
-; Function stolen from stackoverflow 
-(defn count-occurrences [value dice-list]
-  (->> dice-list
-       flatten
-       (filter #{value})
-       count))
-
 ; Rules of the game
 (def triple-scores {1 1000, 2 200, 3 300, 4 400, 5 500, 6 600})
 (def single-scores {1 100, 2 0, 3 0, 4 0, 5 50, 6 0})
 (def score-map {1 single-scores, 3 triple-scores})
+
+(defn count-occurrences [value dice-list]
+  (count (filter #(= value %) dice-list))
+)
 
 (defn determine-score [x times dice-list]
       (+ (if (>= (count-occurrences x dice-list) times) (get (get score-map times) x) 0))
