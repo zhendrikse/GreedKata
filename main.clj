@@ -53,6 +53,6 @@
 (execute-test "triple five in list" 500 (score '(5 2 4 6 5 5)))
 (execute-test "triple six in list" 600 (score '(3 2 4 6 6 6)))
 
-(execute-test "test case 1 from kata" 1500 (score '(1 1 1 5 1)))
+(execute-test "test case 1 from kata" 1150 (score '(1 1 1 5 1)))
 (execute-test "test case 2 from kata" 0 (score '(2 3 4 6 2)))
 (execute-test "test case 3 from kata" 350 (score '(3 4 5 3 3)))
