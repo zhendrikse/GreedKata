@@ -20,10 +20,6 @@
        (filter #{value})
        count))
 
-(defn score-occurrences [value times score dice-list]
-  (if (>= (count-occurrences value dice-list) times) score 0)
-)
-
 ; Rules of the game
 (def triple-scores {1 1000, 2 200, 3 300, 4 400, 5 500, 6 600})
 (def single-scores {1 100, 2 0, 3 0, 4 0, 5 50, 6 0})
@@ -38,10 +34,7 @@
 )
 
 (defn score [dice-list]
-  (+ 
-    (score-times 1 dice-list)
-    (score-times 3 dice-list)
-  )
+  (+ (score-times 1 dice-list) (score-times 3 dice-list))
 )
 
 ; ------------------
