@@ -25,11 +25,13 @@
 (def single-scores {1 100, 2 0, 3 0, 4 0, 5 50, 6 0})
 (def score-map {1 single-scores, 3 triple-scores})
 
-(defn score-frequency [times dice-list]
-  (reduce + 
-    (for [x (range 1 7)] 
+(defn determine-score [x times dice-list]
       (+ (if (>= (count-occurrences x dice-list) times) (get (get score-map times) x) 0))
-    )
+)
+
+(defn score-frequency [times dice-list]
+  (reduce +  
+    (for [x (range 1 7)] (determine-score x times dice-list))
   )
 )
 
