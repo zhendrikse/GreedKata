@@ -30,9 +30,7 @@
 )
 
 (defn score-frequency [times dice-list]
-  (reduce +  
-    (for [x (range 1 7)] (determine-score x times dice-list))
-  )
+  (reduce +  (map #(determine-score % times dice-list) (range 1 7)) )
 )
 
 (defn score [dice-list]
