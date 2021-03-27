@@ -42,9 +42,9 @@
 ; ------------------
 (execute-test "single one in list" 100  (score '(1 4 2 4 6 6)))
 (execute-test "not a single one in list" 0 (score '(3 4 2 4 6 6))) 
-(execute-test "double one in list" 200 (score '(1 4 1 4 6 6)))
+(execute-test "double one in list" 100 (score '(1 4 1 4 6 6)))
 (execute-test "single five in list" 50 (score '(3 4 2 4 5 6)))
-(execute-test "double five in list" 100 (score '(5 4 2 4 5 6)))
+(execute-test "double five in list" 50 (score '(5 4 2 4 5 6)))
 (execute-test "single five and single in list" 150 (score '(1 4 2 4 5 6)))
 (execute-test "triple one in list" 1100 (score '(1 2 4 6 1 1)))
 (execute-test "triple two in list" 200 (score '(2 6 4 6 2 2)))
