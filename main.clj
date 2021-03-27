@@ -20,20 +20,20 @@
        (filter #{s})
        count))
 
-(defn score-occurrences [dice-list value times score]
+(defn score-occurrences [value times score dice-list]
   (if (= (count-occurrences value dice-list) times) score 0)
 )
 
 (defn score [dice-list]
   (+ 
-    (score-occurrences dice-list 1 1 100)  ; single one -> 100
-    (score-occurrences dice-list 1 3 1000) ; tripe one -> 1000 
-    (score-occurrences dice-list 2 3 200)  ; tripe one -> 1000 
-    (score-occurrences dice-list 3 3 300)  ; tripe one -> 1000 
-    (score-occurrences dice-list 4 3 400)  ; tripe one -> 1000 
-    (score-occurrences dice-list 5 1 50)   ; single five -> 50
-    (score-occurrences dice-list 5 3 500)  ; tripe one -> 1000 
-    (score-occurrences dice-list 6 3 600)  ; tripe one -> 1000 
+    (score-occurrences 1 1 100 dice-list)  ; single one -> 100
+    (score-occurrences 1 3 1000 dice-list) ; tripe one -> 1000 
+    (score-occurrences 2 3 200 dice-list)  ; tripe one -> 1000 
+    (score-occurrences 3 3 300 dice-list)  ; tripe one -> 1000 
+    (score-occurrences 4 3 400 dice-list)  ; tripe one -> 1000 
+    (score-occurrences 5 1 50 dice-list)   ; single five -> 50
+    (score-occurrences 5 3 500 dice-list)  ; tripe one -> 1000 
+    (score-occurrences 6 3 600 dice-list)  ; tripe one -> 1000 
   )
 )
 
